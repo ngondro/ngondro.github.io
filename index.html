@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Ngøndro</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ngøndro</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body style="background-color:tomato; color:#fff; font-size:1.8rem">
-<div id='resultG'>Glidefald: </div>
-<div id='resultD'>Diamantsind: </div>
-<div id='resultM'>Mandala Gaver: </div>
+
+<body style="background-color:tomato; color:#fff; font-size:2.8rem">
+    <div class="container">
+        <h1>Ngøndro</h1>
+        <div id='resultG'>Glidefald: </div>
+        <div id='resultD'>Diamantsind: </div>
+        <div id='resultM'>Mandala Gaver: </div>
+    </div>
+    <script type="text/javascript">
+    // Glidefald
+    // 1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/
+
+    // Diamantsind
+    // 1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/
+
+    // Mandala Gaver
+    // 1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/
+
+    $.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function(data) {
+        var XX = 0;
+
+        $.each(data.feed.entry, function(key, val) {
+            XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+        });
+
+        $('#resultG').append(XX);
+
+    });
+
+    $.getJSON("https://spreadsheets.google.com/feeds/list/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/public/values?alt=json", function(data) {
+        var XX = 0;
+
+        $.each(data.feed.entry, function(key, val) {
+            XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+        });
+
+        if (XX < 111111) {
+            $('#resultD').append(XX);
+        } else {
+            $('#resultD').append('<b>' + XX + '</br>');
+        }
 
 
 
-<script type="text/javascript">
+    });
 
-		// Glidefald
-		// 1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/
+    $.getJSON("https://spreadsheets.google.com/feeds/list/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/public/values?alt=json", function(data) {
+        var XX = 0;
 
-		// Diamantsind
-		// 1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/
-		
-		// Mandala Gaver
-		// 1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/
+        $.each(data.feed.entry, function(key, val) {
+            XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+        });
 
-		$.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function(data) {
-			var XX = 0;
+        $('#resultM').append(XX);
 
-			$.each(data.feed.entry, function (key, val) {
-				XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
-			});
-
-			$('#resultG').append(XX);
-  
-		});
-
-		$.getJSON("https://spreadsheets.google.com/feeds/list/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/public/values?alt=json", function(data) {
-			var XX = 0;
-
-			$.each(data.feed.entry, function (key, val) {
-				XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
-			});
-
-			if (XX < 111111) {
-				$('#resultD').append(XX);
-			}
-			else {
-				$('#resultD').append('<b>' + XX + '</br>');
-			}
-
-			
-  
-		});
-
-		$.getJSON("https://spreadsheets.google.com/feeds/list/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/public/values?alt=json", function(data) {
-			var XX = 0;
-
-			$.each(data.feed.entry, function (key, val) {
-				XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
-			});
-
-			$('#resultM').append(XX);
-  
-		});
-
-	</script>
+    });
+    </script>
 </body>
+
 </html>
