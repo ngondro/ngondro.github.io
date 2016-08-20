@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ngøndro</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+</head>
+<body style="background-color:tomato; color:#fff; font-size:1.8rem">
+<div id='resultG'>Glidefald: </div>
+<div id='resultD'>Diamantsind: </div>
+<div id='resultM'>Mandala Gaver: </div>
+
+
+
+<script type="text/javascript">
+
+		// Glidefald
+		// 1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/
+
+		// Diamantsind
+		// 1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/
+		
+		// Mandala Gaver
+		// 1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/
+
+		$.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function(data) {
+			var XX = 0;
+
+			$.each(data.feed.entry, function (key, val) {
+				XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+			});
+
+			$('#resultG').append(XX);
+  
+		});
+
+		$.getJSON("https://spreadsheets.google.com/feeds/list/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/public/values?alt=json", function(data) {
+			var XX = 0;
+
+			$.each(data.feed.entry, function (key, val) {
+				XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+			});
+
+			if (XX < 111111) {
+				$('#resultD').append(XX);
+			}
+			else {
+				$('#resultD').append('<b>' + XX + '</br>');
+			}
+
+			
+  
+		});
+
+		$.getJSON("https://spreadsheets.google.com/feeds/list/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/public/values?alt=json", function(data) {
+			var XX = 0;
+
+			$.each(data.feed.entry, function (key, val) {
+				XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+			});
+
+			$('#resultM').append(XX);
+  
+		});
+
+	</script>
+</body>
+</html>
