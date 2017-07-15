@@ -9,7 +9,8 @@
     <title>Ngøndro</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,59 +21,143 @@
 
 <body style="background-color:tomato; color:#fff; font-size:2.8rem">
     <div class="container">
-        <h1>Ngøndro</h1>
-        <div id='resultG'>Glidefald: </div><div><a href="https://docs.google.com/spreadsheets/d/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/pubhtml">spreadsheet</a></div>
-        <div id='resultD'>Diamantsind: </div><div><a href="https://docs.google.com/spreadsheets/d/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/pubhtml">spreadsheet</a></div>
-        <div id='resultM'>Mandala Gaver: </div><div><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
+        <div class="row">
+            <h1>Ngøndro</h1>
+        </div>
+
+
+
+        <div class="row">
+            <div id='resultG' class="col-md-3">Glidefald: </div>
+            <div id='resultGNo' class="col-md-3">Ngøndro Nummer: </div>
+            <div id='resultGTotal' class="col-md-3">Total: </div>
+            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/pubhtml">spreadsheet</a></div>
+        </div>
+        <div class="row">
+            <div id='resultD' class="col-md-3">Diamantsind: </div>
+            <div id='resultDNo' class="col-md-3">Ngøndro Nummer: </div>
+            <div id='resultDTotal' class="col-md-3">Total: </div>
+            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/pubhtml">spreadsheet</a></div>
+        </div>
+        <div class="row">
+            <div id='resultM' class="col-md-3">Mandala: </div>
+            <div id='resultMNo' class="col-md-3">Ngøndro Nummer: </div>
+            <div id='resultMTotal' class="col-md-3">Total: </div>
+            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
+
+        </div>
+        <div class="row">
+            <div id='resultGu' class="col-md-3">Guru Yoga: </div>
+            <div id='resultGuNo' class="col-md-3">Ngøndro Nummer: </div>
+            <div id='resultGuTotal' class="col-md-3">Total: </div>
+            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
+
+        </div>
     </div>
     <script type="text/javascript">
-    // Glidefald
-    // 1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/
+        // Glidefald
+        // 1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/
 
-    // Diamantsind
-    // 1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/
+        // Diamantsind
+        // 1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/
 
-    // Mandala Gaver
-    // 1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/
+        // Mandala Gaver
+        // 1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/
 
-    $.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function(data) {
-        var XX = 0;
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function (data) {
+            var XX = 0;
+            var textColor;
+            $.each(data.feed.entry, function (key, val) {
+                XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            });
 
-        $.each(data.feed.entry, function(key, val) {
-            XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            var ngondros = Math.ceil((XX + 111111) / 111111);
+            var total = XX + 111111
+            var present = total - ((ngondros - 1) * 111111);
+
+            if (ngondros === 1) { textColor = 'white' }
+            if (ngondros === 2) { textColor = 'red' }
+            if (ngondros === 3) { textColor = 'yellow' }
+
+
+            $('#resultG').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultGNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
+            $('#resultGTotal').append(total);
         });
 
-        $('#resultG').append(XX);
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/public/values?alt=json", function (data) {
+            var XX = 0;
+            var textColor;
+            $.each(data.feed.entry, function (key, val) {
+                XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            });
 
-    });
+            var ngondros = Math.ceil((XX + 111111) / 111111);
+            var total = XX + 111111
+            var present = total - ((ngondros - 1) * 111111);
 
-    $.getJSON("https://spreadsheets.google.com/feeds/list/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/2/public/values?alt=json", function(data) {
-        var XX = 0;
+            if (ngondros === 1) { textColor = 'white' }
+            if (ngondros === 2) { textColor = 'red' }
+            if (ngondros === 3) { textColor = 'yellow' }
 
-        $.each(data.feed.entry, function(key, val) {
-            XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            $('#resultD').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultDNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
+            $('#resultDTotal').append(total);
+
+            // if (XX < 111111) {
+            //     $('#resultD').append(XX);
+            // } else {
+            //     $('#resultD').append('<b>' + XX + '</br>');
+            // }
+
         });
 
-        if (XX < 111111) {
-            $('#resultD').append(XX);
-        } else {
-            $('#resultD').append('<b>' + XX + '</br>');
-        }
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/public/values?alt=json", function (data) {
+            var XX = 0;
+            var textColor;
 
+            $.each(data.feed.entry, function (key, val) {
+                XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            });
 
+            var ngondros = Math.ceil((XX + 111111) / 111111);
+            var total = XX + 111111
+            var present = total - ((ngondros - 1) * 111111);
 
-    });
+            if (ngondros === 1) { textColor = 'white' }
+            if (ngondros === 2) { textColor = 'red' }
+            if (ngondros === 3) { textColor = 'yellow' }
 
-    $.getJSON("https://spreadsheets.google.com/feeds/list/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/public/values?alt=json", function(data) {
-        var XX = 0;
+            $('#resultM').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultMNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
+            $('#resultMTotal').append(total);
 
-        $.each(data.feed.entry, function(key, val) {
-            XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            //$('#resultM').append(XX);
+
         });
 
-        $('#resultM').append(XX);
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function (data) {
+            var XX = 0;
+            var textColor;
 
-    });
+            $.each(data.feed.entry, function (key, val) {
+                XX += parseInt(data.feed.entry[key]['gsx$antal']['$t']);
+            });
+
+            // skal fjernes
+            XX = 0;
+            var ngondros = Math.ceil((XX + 111111) / 111111);
+            var total = XX + 111111
+            var present = total - ((ngondros - 1) * 111111);
+
+            if (ngondros === 1) { textColor = 'white' }
+            if (ngondros === 2) { textColor = 'red' }
+            if (ngondros === 3) { textColor = 'yellow' }
+
+            $('#resultGu').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultGuNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
+            $('#resultGuTotal').append(total);
+        });
     </script>
 </body>
 
