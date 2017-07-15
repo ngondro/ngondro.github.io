@@ -19,7 +19,7 @@
     <![endif]-->
 </head>
 
-<body style="background-color:tomato; color:#fff; font-size:2.8rem">
+<body style="background-color:tomato; color:#fff; font-size:2.4rem">
     <div class="container">
         <div class="row">
             <h1>Ngøndro</h1>
@@ -29,28 +29,33 @@
 
         <div class="row">
             <div id='resultG' class="col-md-3">Glidefald: </div>
-            <div id='resultGNo' class="col-md-3">Ngøndro Nummer: </div>
-            <div id='resultGTotal' class="col-md-3">Total: </div>
-            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/pubhtml">spreadsheet</a></div>
+            <div id='resultGMangler' class="col-md-3">Mangler: </div>
+            <div id='resultGNo' class="col-md-2">Nummer: </div>
+            <div id='resultGTotal' class="col-md-2">Total: </div>
+
+            <div class="col-md-2"><a href="https://docs.google.com/spreadsheets/d/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/pubhtml">spreadsheet</a></div>
         </div>
         <div class="row">
             <div id='resultD' class="col-md-3">Diamantsind: </div>
-            <div id='resultDNo' class="col-md-3">Ngøndro Nummer: </div>
-            <div id='resultDTotal' class="col-md-3">Total: </div>
-            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/pubhtml">spreadsheet</a></div>
+            <div id='resultDMangler' class="col-md-3">Mangler: </div>
+            <div id='resultDNo' class="col-md-2">Nummer: </div>
+            <div id='resultDTotal' class="col-md-2">Total: </div>
+            <div class="col-md-2"><a href="https://docs.google.com/spreadsheets/d/1vU-z8dcof8vkupuEilOtQWB8gxwovEXZBgkjrSfrcco/pubhtml">spreadsheet</a></div>
         </div>
         <div class="row">
             <div id='resultM' class="col-md-3">Mandala: </div>
-            <div id='resultMNo' class="col-md-3">Ngøndro Nummer: </div>
-            <div id='resultMTotal' class="col-md-3">Total: </div>
-            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
+            <div id='resultMMangler' class="col-md-3">Mangler: </div>
+            <div id='resultMNo' class="col-md-2">Nummer: </div>
+            <div id='resultMTotal' class="col-md-2">Total: </div>
+            <div class="col-md-2"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
 
         </div>
         <div class="row">
             <div id='resultGu' class="col-md-3">Guru Yoga: </div>
-            <div id='resultGuNo' class="col-md-3">Ngøndro Nummer: </div>
-            <div id='resultGuTotal' class="col-md-3">Total: </div>
-            <div class="col-md-3"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
+            <div id='resultGuMangler' class="col-md-3">Mangler: </div>
+            <div id='resultGuNo' class="col-md-2">Nummer: </div>
+            <div id='resultGuTotal' class="col-md-2">Total: </div>
+            <div class="col-md-2"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
 
         </div>
     </div>
@@ -74,6 +79,7 @@
             var ngondros = Math.ceil((XX + 111111) / 111111);
             var total = XX + 111111
             var present = total - ((ngondros - 1) * 111111);
+            var mangler = 111111 - present;
 
             if (ngondros === 1) { textColor = 'white' }
             if (ngondros === 2) { textColor = 'red' }
@@ -81,6 +87,7 @@
 
 
             $('#resultG').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultGMangler').append("<span style='color: " + textColor + "'>" + mangler + "</span>");
             $('#resultGNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
             $('#resultGTotal').append(total);
         });
@@ -95,12 +102,14 @@
             var ngondros = Math.ceil((XX + 111111) / 111111);
             var total = XX + 111111
             var present = total - ((ngondros - 1) * 111111);
+            var mangler = 111111 - present;
 
             if (ngondros === 1) { textColor = 'white' }
             if (ngondros === 2) { textColor = 'red' }
             if (ngondros === 3) { textColor = 'yellow' }
 
             $('#resultD').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultDMangler').append("<span style='color: " + textColor + "'>" + mangler + "</span>");
             $('#resultDNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
             $('#resultDTotal').append(total);
 
@@ -123,12 +132,14 @@
             var ngondros = Math.ceil((XX + 111111) / 111111);
             var total = XX + 111111
             var present = total - ((ngondros - 1) * 111111);
+            var mangler = 111111 - present;
 
             if (ngondros === 1) { textColor = 'white' }
             if (ngondros === 2) { textColor = 'red' }
             if (ngondros === 3) { textColor = 'yellow' }
 
             $('#resultM').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultMMangler').append("<span style='color: " + textColor + "'>" + mangler + "</span>");
             $('#resultMNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
             $('#resultMTotal').append(total);
 
@@ -149,12 +160,14 @@
             var ngondros = Math.ceil((XX + 111111) / 111111);
             var total = XX + 111111
             var present = total - ((ngondros - 1) * 111111);
+            var mangler = 111111 - present;
 
             if (ngondros === 1) { textColor = 'white' }
             if (ngondros === 2) { textColor = 'red' }
             if (ngondros === 3) { textColor = 'yellow' }
 
             $('#resultGu').append("<span style='color: " + textColor + "'>" + present + "</span>");
+            $('#resultGuMangler').append("<span style='color: " + textColor + "'>" + mangler + "</span>");
             $('#resultGuNo').append("<span style='color: " + textColor + "'>" + ngondros + "</span>");
             $('#resultGuTotal').append(total);
         });
