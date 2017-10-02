@@ -68,7 +68,7 @@
             <div id='resultGuMangler'>Mangler: </div>
             <div>Sidst opdateret: <span id='resultGuSidst' class='small'></span></div>
             <div id='resultGuTotal'>Total: </div>
-            <div class="small"><a href="https://docs.google.com/spreadsheets/d/1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/pubhtml">spreadsheet</a></div>
+            <div class="small"><a href="https://docs.google.com/spreadsheets/d/1rfzL7YOYQx7Hkp4Vv_hPwq1TKCme8Cs14daX1AM9La0/pubhtml">spreadsheet</a></div>
 
         </div>
     </div>
@@ -81,6 +81,9 @@
 
         // Mandala Gaver
         // 1_V13f5LAdTfD45p6gUVoffmWBlZS0BGZ-5ayaG80lrg/1/
+
+        // Guru yoga
+        // 1rfzL7YOYQx7Hkp4Vv_hPwq1TKCme8Cs14daX1AM9La0/1/
 
         $.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function (data) {
             var XX = 0;
@@ -154,7 +157,7 @@
 
         });
 
-        $.getJSON("https://spreadsheets.google.com/feeds/list/1uP_I6-q7hzh1IsAyQfL4MRmknsOqg1si3hAcmSQUb1o/1/public/values?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1rfzL7YOYQx7Hkp4Vv_hPwq1TKCme8Cs14daX1AM9La0/1/public/values?alt=json", function (data) {
             var XX = 0;
             var sidste;
             var sidstAntal;
@@ -166,8 +169,8 @@
             });
 
             // skal fjernes
-            XX = 0;
-            sidste = '--';
+            // XX = 0;
+            // sidste = '--';
             var ngondros = Math.ceil((XX + 111111) / 111111);
             var total = XX + 111111
             var present = total - ((ngondros - 1) * 111111);
